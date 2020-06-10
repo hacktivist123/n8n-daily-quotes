@@ -1,5 +1,5 @@
 # n8n-daily-quotes
-[Workflow Image](https://f000.backblazeb2.com/file/n8n-website-images/cbcb64ecb1c344e49f84a9f787ca53f6.png)
+![Workflow Image](https://f000.backblazeb2.com/file/n8n-website-images/cbcb64ecb1c344e49f84a9f787ca53f6.png)
 
 A workflow that allows you to receive Daily Random Quotes via Telegram by querying a REST API triggered by a Cron node.
 
