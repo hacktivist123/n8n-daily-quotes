@@ -6,10 +6,10 @@ A workflow that allows you to receive Daily Random Quotes via Telegram by queryi
 I made use of the [quotable.io](https://quotable.io) API
 
 ## Nodes used in workflow:
- 1x Cron
- 1x Start
- 1x Telegram
- 1x HTTP Request
+ 1x `Cron`
+ 1x `Start`
+ 1x `Telegram`
+ 1x `HTTP Request`
  
 ## Workflow Code:
 To open this workflow in n8n do the following:
