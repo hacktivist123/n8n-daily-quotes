@@ -1,0 +1,95 @@
+{
+  "id": "2",
+  "name": "Random-Quotes",
+  "nodes": [
+    {
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "position": [
+        320,
+        380
+      ],
+      "parameters": {},
+      "typeVersion": 1
+    },
+    {
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        580,
+        380
+      ],
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 8
+            }
+          ]
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        850,
+        380
+      ],
+      "parameters": {
+        "url": "https://api.quotable.io/random",
+        "options": {},
+        "responseFormat": "string",
+        "queryParametersUi": {
+          "parameter": []
+        },
+        "allowUnauthorizedCerts": true
+      },
+      "typeVersion": 1
+    },
+    {
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1060,
+        380
+      ],
+      "parameters": {
+        "text": "=Hey Sheddy, Good Morning ☀️.\n\nHere is a Quote For You Today by {{$node[\"HTTP Request\"].json[\"data\"][\"author\"]}} 😄\n\n-----\n\n{{$node[\"HTTP Request\"].json[\"data\"][\"content\"]}}\n\n------",
+        "chatId": "625936625",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": "Token"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": true,
+  "settings": {},
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
